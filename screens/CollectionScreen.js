@@ -1,15 +1,22 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, FlatList, StyleSheet, Text, View } from 'react-native';
+import { usePlants } from '../src/hooks/usePlants';
+import PlantCard from '../src/components/PlantCard';
 
 export default function CollectionScreen() {
+  const { data, isLoading, error } = usePlants({ page: 1 });
+
+  if (isLoading) return <View style={styles.center}><ActivityIndicator /></View>;
+  if (error) return <View style={styles.center}><Text>Erreur: {error.message}</Text></View>;
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Ma collection</Text>
-      <Text>Tes cartes apparaîtront ici.</Text>
-    </View>
+    <FlatList
+      data={data?.data ?? []}
+      keyExtractor={(item) => String(item.id)}
+      renderItem={({ item }) => <PlantCard plant={item} />}
+    />
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, alignItems: 'center', justifyContent: 'center', gap: 8 },
-  title: { fontSize: 24, fontWeight: 'bold' },
+  center: { flex: 1, alignItems: 'center', justifyContent: 'center' },
 });
