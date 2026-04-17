@@ -1,6 +1,6 @@
-# TCG Plante
+# CCG Plante
 
-App mobile React Native (Expo) — projet TCG Plante.
+App mobile React Native (Expo) — projet CCG Plante (Collectible Card Game).
 
 ## Stack
 

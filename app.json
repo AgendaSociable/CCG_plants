@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "tcg-plante-init",
-    "slug": "tcg-plante-init",
+    "name": "ccg-plante",
+    "slug": "ccg-plante",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
